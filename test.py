@@ -37,7 +37,7 @@ if personal_color_type == "퍼스널 컬러를 선택해주세요!":
 elif personal_color_type == "봄 웜톤":
     st.subheader("🌷 봄 웜톤 (Spring Warm) 🌷")
     st.write("싱그럽고 발랄한, 생기 넘치는 봄의 기운을 담은 당신!")
-    st.image("https://i.imgur.com/E9zB2h9.jpeg", caption="봄 웜톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 봄 웜톤 관련 이미지 예시
+    st.image("https://blog.kakaocdn.net/dna/JeeHb/btsFgM8jjqH/AAAAAAAAAAAAAAAAAAAAAIgWsqj6ThoousP1ISl8CCa1kRqV3QT1R6SnGFs2l2fN/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1756652399&allow_ip=&allow_referer=&signature=4ExrgPPkKsO1nV4c21o7j5ep094%3D", caption="봄 웜톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 봄 웜톤 관련 이미지 예시
     st.markdown("---")
 
     st.markdown("#### 💄 어울리는 화장품 색상 (코스메틱) 💄")
