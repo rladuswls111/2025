@@ -1,143 +1,148 @@
 import streamlit as st
 
-# 🎀 앱 기본 설정 및 핑크 테마 적용하기 🎀
+# ✨ 페이지 설정: 제목과 레이아웃을 미리 설정해서 깔끔하게 시작해요!
 st.set_page_config(
-    page_title="💖 내게 딱! 퍼스널 컬러 화장품 💖",
-    page_icon="✨",
-    layout="centered"
+    page_title="💖 나의 퍼스널 컬러 스타일 가이드 💖",
+    layout="centered", # 웹 페이지 내용이 중앙에 정렬되도록
+    initial_sidebar_state="expanded" # 사이드바가 기본적으로 열리도록
 )
 
-# 🌸 커스텀 핑크 테마 CSS (전체적인 배경과 텍스트 색상을 조절해요!) 🌸
-# Streamlit은 직접 CSS를 주입할 수 있어서 원하는 색상으로 마음껏 꾸밀 수 있어요!
-st.markdown(
+# 🤩 앱의 제목과 간단한 소개를 넣어볼까요?
+st.title("🌈 나의 ✨관능적인✨ 퍼스널 컬러 스타일 가이드 🌈")
+st.markdown("---") # 시각적인 구분을 위해 구분선을 넣어봤어요!
+
+st.write(
     """
-    <style>
-    /* 전체 배경색을 연한 핑크로 설정 */
-    .stApp {
-        background-color: #ffeef2; /* 연한 핑크 */
-    }
-    /* 사이드바 배경색 설정 */
-    .stSidebar {
-        background-color: #ffdae3; /* 조금 더 진한 핑크 */
-    }
-    /* 헤더 폰트 색상 및 폰트 변경 (더 트렌디하게!) */
-    h1, h2, h3, h4, h5, h6 {
-        color: #e91e63; /* 핫핑크 계열 */
-        font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; /* 한글 폰트 */
-    }
-    /* 일반 텍스트 색상 */
-    div.stMarkdown p {
-        color: #5d3f6a; /* 보라빛이 감도는 세련된 색상 */
-        font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-    }
-    /* 선택 박스 및 버튼 스타일링 */
-    .stSelectbox>div>div, .stButton>button {
-        border-color: #ff7299; /* 버튼 테두리 핑크 */
-        color: #e91e63; /* 버튼 텍스트 핑크 */
-        background-color: #fff0f5; /* 버튼 배경 연한 핑크 */
-    }
-    .stSelectbox>div>div:hover, .stButton>button:hover {
-        background-color: #ffbed3; /* 호버 시 진한 핑크 */
-        color: white;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
+    안녕하세요, 창의적인몽구스5351님! 🥰
+    나만의 **퍼스널 컬러**를 찾고, 그에 어울리는 **화장품 색상**과 **옷 코디** 팁을 알아보세요!
+    아래에서 당신의 퍼스널 컬러 타입을 선택해 주세요.
+    """
 )
 
-st.title("💖 내 퍼스널 컬러에 찰떡! 화장품 추천 앱 💖")
-st.markdown("✨ **창의적인몽구스5351님만의 특별한 뷰티 가이드!** ✨")
-
-# 💄 샘플 화장품 데이터 (데이터베이스 대신 예시로 사용!) 💄
-# 실제 앱에서는 이 부분을 데이터베이스나 CSV 파일 등으로 관리하면 더욱 편리해요!
-cosmetics_data = [
-    {
-        "name": "립틴트 (코랄블러쉬)",
-        "brand": "베스트뷰티",
-        "suitable_for": ["봄 웜톤"],
-        "description": "생기 넘치는 코랄빛이 봄 웜톤 피부에 화사함을 더해줘요!",
-        "image_url": "https://via.placeholder.com/150/FFC0CB/000000?text=CoralTint" # 더미 이미지 URL
-    },
-    {
-        "name": "아이섀도우 팔레트 (라벤더 드림)",
-        "brand": "쿨톤뮤즈",
-        "suitable_for": ["여름 쿨톤"],
-        "description": "시원하고 청량한 라벤더와 그레이시 핑크 조합이 여름 쿨톤 눈매를 돋보이게 해요.",
-        "image_url": "https://via.placeholder.com/150/CCCCFF/000000?text=LavenderShadow"
-    },
-    {
-        "name": "매트 립스틱 (칠리 브릭)",
-        "brand": "가을감성",
-        "suitable_for": ["가을 웜톤"],
-        "description": "깊이 있는 칠리 브릭 컬러로 가을 웜톤의 분위기를 더욱 풍성하게 연출해보세요.",
-        "image_url": "https://via.placeholder.com/150/B87333/FFFFFF?text=ChilliLip"
-    },
-    {
-        "name": "블러셔 (차가운 핑크)",
-        "brand": "겨울여왕",
-        "suitable_for": ["겨울 쿨톤"],
-        "description": "얼굴에 생기를 불어넣는 차가운 핑크빛 블러셔로 겨울 쿨톤의 시크함을 표현해요.",
-        "image_url": "https://via.placeholder.com/150/FF69B4/000000?text=CoolPinkBlusher"
-    },
-    {
-        "name": "피치 블러셔 (맑은 피치)",
-        "brand": "베스트뷰티",
-        "suitable_for": ["봄 웜톤"],
-        "description": "맑고 상큼한 피치 색상이 봄 웜톤 피부에 생기를 더해줍니다!",
-        "image_url": "https://via.placeholder.com/150/FFDAB9/000000?text=PeachBlusher"
-    },
-    {
-        "name": "아이라이너 (딥 브라운)",
-        "brand": "공용템",
-        "suitable_for": ["봄 웜톤", "가을 웜톤", "여름 쿨톤", "겨울 쿨톤"], # 모든 톤에 어울리는 예시
-        "description": "또렷한 눈매를 연출하는 데일리 딥 브라운 아이라이너입니다.",
-        "image_url": "https://via.placeholder.com/150/8B4513/FFFFFF?text=BrownEyeliner"
-    }
-]
-
-# 👩‍🎤 퍼스널 컬러 선택하기 👩‍🎤
-personal_colors = ["퍼스널 컬러를 선택해주세요!", "봄 웜톤", "여름 쿨톤", "가을 웜톤", "겨울 쿨톤"]
-selected_color = st.selectbox(
-    "💡 당신의 퍼스널 컬러는 무엇인가요?",
-    personal_colors
+# 🎈 퍼스널 컬러 선택 박스를 만들어봐요!
+personal_color_type = st.selectbox(
+    "💖 당신의 퍼스널 컬러는 무엇인가요? 💖",
+    ("퍼스널 컬러를 선택해주세요!", "봄 웜톤", "여름 쿨톤", "가을 웜톤", "겨울 쿨톤"),
+    index=0 # 초기에는 "퍼스널 컬러를 선택해주세요!"가 보이도록 설정
 )
-
-if selected_color == "퍼스널 컬러를 선택해주세요!":
-    st.info("⬆️ 위에 있는 드롭다운 메뉴에서 당신의 퍼스널 컬러를 선택해주세요! ⬆️")
-else:
-    st.write(f"🎉 **{selected_color}** 이시군요! 당신을 위한 화장품을 찾아볼까요? 🎉")
-
-    # 🛍️ 화장품 추천하기 🛍️
-    recommended_cosmetics = [
-        item for item in cosmetics_data if selected_color in item["suitable_for"]
-    ]
-
-    if recommended_cosmetics:
-        st.subheader(f"{selected_color}을 위한 추천템! 🎁")
-        
-        # 컬럼을 사용하여 화장품을 나란히 배열 (더 깔끔하고 보기 좋게!)
-        num_cols = 2 # 한 줄에 표시할 컬럼 수
-        cols = st.columns(num_cols)
-        
-        for i, cosmetic in enumerate(recommended_cosmetics):
-            with cols[i % num_cols]: # 현재 컬럼에 내용 추가
-                st.image(cosmetic["image_url"], width=100) # 이미지 크기 조절
-                st.markdown(f"**{cosmetic['name']}**")
-                st.markdown(f"브랜드: *{cosmetic['brand']}*")
-                st.caption(cosmetic["description"])
-
-                # 🔗 올리브영 검색 링크 생성하기 🔗
-                # 실제 제품 페이지 링크는 제품 ID 등을 알아야 하지만,
-                # 여기서는 제품명을 검색하는 링크로 대체했어요!
-                search_query = cosmetic['name'].replace(" ", "+") # 공백을 +로 바꿔서 URL에 넣기
-                oliveyoung_search_link = f"https://www.oliveyoung.co.kr/store/search/searchResult.do?query={search_query}"
-                
-                st.markdown(f"[올리브영에서 **{cosmetic['name']}** 찾아보기 🛒]({oliveyoung_search_link})")
-                st.markdown("---") # 각 아이템 사이에 구분선 추가
-
-    else:
-        st.warning("아쉽지만, 해당 퍼스널 컬러에 맞는 추천 제품이 아직 없어요. 😢")
 
 st.markdown("---")
-st.markdown("개발 문의: **관능적인 맹꽁이** 🐸")
 
+# 🌷 선택된 퍼스널 컬러에 따라 다른 정보를 보여줄 거예요!
+
+if personal_color_type == "퍼스널 컬러를 선택해주세요!":
+    st.info("👆 위에 있는 드롭다운 메뉴에서 당신의 퍼스널 컬러를 선택해 주세요!")
+    st.image("https://i.imgur.com/8Y4fG2T.jpeg", caption="퍼스널 컬러 진단은 자신을 더 빛나게 해줄 거예요!", use_column_width=True) # 이미지 추가!
+
+elif personal_color_type == "봄 웜톤":
+    st.subheader("🌷 봄 웜톤 (Spring Warm) 🌷")
+    st.write("싱그럽고 발랄한, 생기 넘치는 봄의 기운을 담은 당신!")
+    st.image("https://i.imgur.com/E9zB2h9.jpeg", caption="봄 웜톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 봄 웜톤 관련 이미지 예시
+    st.markdown("---")
+
+    st.markdown("#### 💄 어울리는 화장품 색상 (코스메틱) 💄")
+    st.markdown(
+        """
+        -   **립:** 코랄, 피치, 살몬 핑크, 맑은 오렌지
+        -   **아이섀도우:** 샴페인 골드, 피치 브라운, 코랄 브라운, 연한 옐로우
+        -   **블러셔:** 피치, 코랄, 살구색
+        -   **베이스:** 옐로우 베이스의 밝고 화사한 톤 (핑크 베이스는 자칫 노랗게 뜰 수 있어요!)
+        """
+    )
+    st.markdown("💡 **팁:** 맑고 생기 있는 색상이 가장 잘 어울려요. 너무 진하거나 탁한 색은 피해주세요!")
+
+    st.markdown("#### 👗 어울리는 옷 색상 및 스타일 (패션) 👗")
+    st.markdown(
+        """
+        -   **의류:** 아이보리, 라이트 베이지, 코랄, 민트 그린, 베이비 블루, 옐로우, 연두색 등
+        -   **악세사리:** 골드, 로즈골드, 맑은 보석 (시트린, 아쿠아마린)
+        -   **스타일:** 꽃무늬, 물방울 무늬 등 발랄한 패턴, 하늘하늘한 소재
+        """
+    )
+    st.markdown("💡 **팁:** 밝고 따뜻한 느낌을 주는 색상들을 적극적으로 활용해 보세요. 전체적으로 화사하고 러블리한 분위기를 연출할 수 있어요!")
+
+elif personal_color_type == "여름 쿨톤":
+    st.subheader("💧 여름 쿨톤 (Summer Cool) 💧")
+    st.write("청량하고 우아한, 부드러운 여름의 냉기를 머금은 당신!")
+    st.image("https://i.imgur.com/1G6V4rS.jpeg", caption="여름 쿨톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 여름 쿨톤 관련 이미지 예시
+    st.markdown("---")
+
+    st.markdown("#### 💄 어울리는 화장품 색상 (코스메틱) 💄")
+    st.markdown(
+        """
+        -   **립:** 푸시아 핑크, 라벤더 핑크, 말린 장미(MLBB 쿨톤), 플럼
+        -   **아이섀도우:** 연한 그레이, 라벤더, 모브, 소프트 브라운 (회색빛 도는)
+        -   **블러셔:** 딸기 우유 핑크, 연보라, 로즈 핑크
+        -   **베이스:** 핑크 베이스의 화사하거나 차분한 톤
+        """
+    )
+    st.markdown("💡 **팁:** 탁하지 않은 부드럽고 차분한 파스텔 톤의 색상이 좋아요. 너무 강하거나 쨍한 색은 피해주세요!")
+
+    st.markdown("#### 👗 어울리는 옷 색상 및 스타일 (패션) 👗")
+    st.markdown(
+        """
+        -   **의류:** 라이트 그레이, 스카이 블루, 라벤더, 베이비 핑크, 민트, 네이비, 화이트
+        -   **악세사리:** 실버, 화이트 골드, 진주, 푸른빛 도는 보석 (사파이어, 아쿠아마린)
+        -   **스타일:** 시폰, 레이스 등 부드러운 소재, 단정하고 우아한 디자인
+        """
+    )
+    st.markdown("💡 **팁:** 시원하고 청량하면서도 부드러운 파스텔톤 컬러들이 당신의 매력을 더욱 돋보이게 할 거예요!")
+
+elif personal_color_type == "가을 웜톤":
+    st.subheader("🍂 가을 웜톤 (Autumn Warm) 🍂")
+    st.write("성숙하고 깊이 있는, 그윽한 가을의 풍요로움을 담은 당신!")
+    st.image("https://i.imgur.com/yZ4xX4M.jpeg", caption="가을 웜톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 가을 웜톤 관련 이미지 예시
+    st.markdown("---")
+
+    st.markdown("#### 💄 어울리는 화장품 색상 (코스메틱) 💄")
+    st.markdown(
+        """
+        -   **립:** 브릭 레드, 칠리, MLBB 코랄 브라운, 오렌지 브라운, 벽돌색
+        -   **아이섀도우:** 카키, 올리브, 골드 브라운, 로즈 골드, 테라코타
+        -   **블러셔:** 벽돌색, 누드 코랄, 오렌지 브라운
+        -   **베이스:** 내추럴 베이지, 건강한 윤기가 도는 톤
+        """
+    )
+    st.markdown("💡 **팁:** 깊이 있고 차분한 음영 컬러와 따뜻한 브라운 계열이 당신의 분위기를 더해줄 거예요. 밝고 쨍한 색은 피해주세요!")
+
+    st.markdown("#### 👗 어울리는 옷 색상 및 스타일 (패션) 👗")
+    st.markdown(
+        """
+        -   **의류:** 올리브 그린, 카키, 브릭 레드, 버건디, 머스타드 옐로우, 다크 브라운, 카멜, 블랙
+        -   **악세사리:** 골드, 구리, 나무, 호박 보석 등 자연적인 소재
+        -   **스타일:** 트위드, 니트, 스웨이드, 가죽 등 중후한 소재, 자연스럽고 우아한 디자인
+        """
+    )
+    st.markdown("💡 **팁:** 따뜻하고 깊이 있는 자연의 색들이 당신의 지적이고 성숙한 매력을 한층 끌어올려 줄 거예요!")
+
+elif personal_color_type == "겨울 쿨톤":
+    st.subheader("❄️ 겨울 쿨톤 (Winter Cool) ❄️")
+    st.write("시크하고 강렬한, 선명한 겨울의 카리스마를 지닌 당신!")
+    st.image("https://i.imgur.com/vH1Wf4t.jpeg", caption="겨울 쿨톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 겨울 쿨톤 관련 이미지 예시
+    st.markdown("---")
+
+    st.markdown("#### 💄 어울리는 화장품 색상 (코스메틱) 💄")
+    st.markdown(
+        """
+        -   **립:** 비비드 푸시아 핑크, 버건디, 체리 레드, 플럼, 와인
+        -   **아이섀도우:** 차콜 그레이, 블랙, 화이트, 쿨톤 브라운 (회색빛 도는 진한)
+        -   **블러셔:** 쿨 핑크, 버건디
+        -   **베이스:** 창백하리만치 깨끗한 핑크 베이스 or 잿빛이 도는 쿨 베이스
+        """
+    )
+    st.markdown("💡 **팁:** 선명하고 대비감이 강한 색상이 잘 어울려요. 탁하거나 따뜻한 색은 피해주세요!")
+
+    st.markdown("#### 👗 어울리는 옷 색상 및 스타일 (패션) 👗")
+    st.markdown(
+        """
+        -   **의류:** 순백색, 블랙, 로얄 블루, 비비드 핑크, 에메랄드 그린, 버건디, 차콜 그레이
+        -   **악세사리:** 실버, 플래티넘, 다이아몬드, 블랙 오닉스 등 반짝이고 선명한 소재
+        -   **스타일:** 모던하고 심플한 디자인, 과감한 패턴, 시크한 느낌의 의상
+        """
+    )
+    st.markdown("💡 **팁:** 명료하고 대비가 강한 색상 조합은 당신의 독특하고 시크한 매력을 더욱 돋보이게 만들 거예요!")
+
+# 😊 하단 푸터 (선택 사항)
+st.markdown("---")
+st.markdown("##### ✨ 퍼스널 컬러와 함께 당신의 아름다움을 더욱 빛내세요! ✨")
+st.markdown("###### Made with ❤️ by 관능적인 맹꽁이")
