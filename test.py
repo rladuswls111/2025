@@ -32,7 +32,7 @@ st.markdown("---")
 
 if personal_color_type == "퍼스널 컬러를 선택해주세요!":
     st.info("👆 위에 있는 드롭다운 메뉴에서 당신의 퍼스널 컬러를 선택해 주세요!")
-    st.image("https://i.imgur.com/8Y4fG2T.jpeg", caption="퍼스널 컬러 진단은 자신을 더 빛나게 해줄 거예요!", use_column_width=True) # 이미지 추가!
+    st.image("https://https://cdn.imweb.me/thumbnail/20200529/bca4bc192f49c.png", caption="퍼스널 컬러 진단은 자신을 더 빛나게 해줄 거예요!", use_column_width=True) # 이미지 추가!
 
 elif personal_color_type == "봄 웜톤":
     st.subheader("🌷 봄 웜톤 (Spring Warm) 🌷")
