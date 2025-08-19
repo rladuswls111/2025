@@ -64,7 +64,7 @@ elif personal_color_type == "봄 웜톤":
 elif personal_color_type == "여름 쿨톤":
     st.subheader("💧 여름 쿨톤 (Summer Cool) 💧")
     st.write("청량하고 우아한, 부드러운 여름의 냉기를 머금은 당신!")
-    st.image("https://i.imgur.com/1G6V4rS.jpeg", caption="여름 쿨톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 여름 쿨톤 관련 이미지 예시
+    st.image("https://cdn.jsdelivr.net/gh/thesimplegithub/mycolor-hosting/images/summerMeta.png", caption="여름 쿨톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 여름 쿨톤 관련 이미지 예시
     st.markdown("---")
 
     st.markdown("#### 💄 어울리는 화장품 색상 (코스메틱) 💄")
@@ -91,7 +91,7 @@ elif personal_color_type == "여름 쿨톤":
 elif personal_color_type == "가을 웜톤":
     st.subheader("🍂 가을 웜톤 (Autumn Warm) 🍂")
     st.write("성숙하고 깊이 있는, 그윽한 가을의 풍요로움을 담은 당신!")
-    st.image("https://i.imgur.com/yZ4xX4M.jpeg", caption="가을 웜톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 가을 웜톤 관련 이미지 예시
+    st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmV23CKC6HkFikvXEkqfgqnfCob3Hr3seDkw&s", caption="가을 웜톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 가을 웜톤 관련 이미지 예시
     st.markdown("---")
 
     st.markdown("#### 💄 어울리는 화장품 색상 (코스메틱) 💄")
@@ -118,7 +118,7 @@ elif personal_color_type == "가을 웜톤":
 elif personal_color_type == "겨울 쿨톤":
     st.subheader("❄️ 겨울 쿨톤 (Winter Cool) ❄️")
     st.write("시크하고 강렬한, 선명한 겨울의 카리스마를 지닌 당신!")
-    st.image("https://i.imgur.com/vH1Wf4t.jpeg", caption="겨울 쿨톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 겨울 쿨톤 관련 이미지 예시
+    st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRAh4CBFM3K1Q2lWFifHq3QHP1Y6j4V4awQQ&s", caption="겨울 쿨톤 이미지를 대표하는 사진이에요!", use_column_width=True) # 겨울 쿨톤 관련 이미지 예시
     st.markdown("---")
 
     st.markdown("#### 💄 어울리는 화장품 색상 (코스메틱) 💄")
